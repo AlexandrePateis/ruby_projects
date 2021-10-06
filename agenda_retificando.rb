@@ -19,6 +19,20 @@ def show_contact
     puts"============================================"
 end 
 
+def remove_contact 
+    print "Which name do you want to remove? Type here: "
+    name = gets.chomp
+
+    @schedule.each do |c|
+        if c[:name].downcase == (name.downcase)
+            indice = @schedule.index(c)
+            @schedule.delete_at(indice)
+            break
+        end   
+    end         
+end
+
+
 loop do
     puts "1-Add contact\n2-Show contact\n3-Remove contact\n4-Quit"
     op = gets.chomp.to_i
@@ -27,6 +41,8 @@ loop do
         add_contact
     when op == 2
         show_contact
+    when op == 3
+        remove_contact    
     else op >3
         break
     end
